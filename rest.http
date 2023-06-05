@@ -1,0 +1,18 @@
+GET http://localhost:8080/api/user/
+Accept: application/json
+
+###
+POST http://localhost:8080/api/user
+Content-Type: application/json
+
+{
+  "login": "alex",
+  "firstname": "Alex",
+  "lastname": "Moe"
+}
+
+###
+GET http://localhost:8080/api/article/
+Accept: application/json
+
+###
