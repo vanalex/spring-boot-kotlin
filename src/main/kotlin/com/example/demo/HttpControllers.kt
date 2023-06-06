@@ -15,6 +15,24 @@ class ArticleController(private val repository: ArticleRepository) {
     fun findOne(@PathVariable slug: String) =
         repository.findBySlug(slug) ?: throw ResponseStatusException(NOT_FOUND, "This article does not exist")
 
+    @PostMapping
+    fun postArticle(@RequestBody article: Article) {
+        repository.save(article)
+    }
+
+    @PutMapping
+    fun updatedArticle(@RequestBody article: Article, @RequestParam id: Long) {
+        val existingArticle = repository.findById(id).orElseThrow { ResponseStatusException(NOT_FOUND, "This article does not exist") }
+        val updatedArticle = Article(
+                title = article.title,
+        headline = article.headline,
+        content = article.content,
+        author = article.author,
+        slug = article.slug,
+        id = existingArticle.id
+        )
+        repository.save(updatedArticle)
+    }
 }
 
 @RestController

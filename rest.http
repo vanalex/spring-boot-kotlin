@@ -1,3 +1,39 @@
+PUT http://localhost:8080/api/article?id=1
+Content-Type: application/json
+
+{
+  "title": "Lorem",
+  "headline": "Ipsum",
+  "content": "This is the content",
+  "author": {
+    "login": "alex",
+    "firstname": "Alex",
+    "lastname": "Moe",
+    "id": 1
+  }
+}
+
+###
+POST http://localhost:8080/api/article
+Content-Type: application/json
+
+{
+  "title": "Loremm",
+  "headline": "Ipsumm",
+  "content": "This is the awesome content",
+  "author": {
+    "login": "john_doe",
+    "firstname": "John",
+    "lastname": "Doe",
+    "id": 1
+  }
+}
+
+###
+GET http://localhost:8080/api/article/
+Accept: application/json
+
+###
 GET http://localhost:8080/api/user/
 Accept: application/json
 
@@ -6,13 +42,7 @@ POST http://localhost:8080/api/user
 Content-Type: application/json
 
 {
-  "login": "alex",
-  "firstname": "Alex",
-  "lastname": "Moe"
+  "login": "john_doe",
+  "firstname": "John",
+  "lastname": "Doe"
 }
-
-###
-GET http://localhost:8080/api/article/
-Accept: application/json
-
-###
