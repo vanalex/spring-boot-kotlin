@@ -33,6 +33,11 @@ class ArticleController(private val repository: ArticleRepository) {
         )
         repository.save(updatedArticle)
     }
+
+    @DeleteMapping
+    fun deleteArticle(@RequestParam id: Long){
+        repository.deleteById(id)
+    }
 }
 
 @RestController
@@ -49,4 +54,10 @@ class UserController(private val repository: UserRepository) {
     fun postUser(@RequestBody user: User) {
         if (repository.findByLogin(user.login) != null) throw ResponseStatusException(CONFLICT, "user already exists") else repository.save(user)
     }
+
+    @DeleteMapping
+    fun deleteUser(@RequestParam id: Long){
+        repository.deleteById(id)
+    }
+
 }
